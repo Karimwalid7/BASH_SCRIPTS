@@ -59,6 +59,8 @@ log_error(){
         echo "[ALERT] $1 $(date '+%H:%M:%S')" | tee -a "$LOG_FILE" >&2
 }
 
+echo " ################ Checking System Resources ############### "
+
 #check cpu usage 
 CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print int(100 - $8)}')
 if [ "$CPU_USAGE" -gt "$CPU_THRESHOLD" ]; then
